@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from snortsolver.repl import REPL
 
 if __name__ == '__main__':
