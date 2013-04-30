@@ -1,8 +1,9 @@
 import sys
 import os
-sys.path.append(os.path.join(os.getcwd(), '../demo'))
+sys.path.append(os.path.join(os.getcwd(), '../demo/snortsolver'))
 
-import GameState
+from gamestate import GameState, InvalidMoveException
+
 import unittest
 
 import networkx as nx
@@ -18,14 +19,14 @@ class GameStateTest(unittest.TestCase):
 	def test_init(self):
 		"""Tests the initialization of a GameState"""
 		GameStateTest.G.add_edge(0, 1)
-		state = GameState.GameState(GameStateTest.G)
+		state = GameState(GameStateTest.G)
 		self.assertEquals(state.turn, Label.RED)
 		self.assertFalse(state.is_gameover())
 		self.assertFalse(state.is_terminal())
 
 	def test_normal_play(self):
 		"""Tests a normal game."""
-		state = GameState.GameState(GameStateTest.G)
+		state = GameState(GameStateTest.G)
 
 		self.assertEquals(state.turn, Label.RED)
 		state.make_move(0)
@@ -52,7 +53,7 @@ class GameStateTest(unittest.TestCase):
 		GameStateTest.G.add_edge(0, 1)
 		GameStateTest.G.add_node(3)
 		GameStateTest.G.add_edge(2, 3)
-		state = GameState.GameState(GameStateTest.G)
+		state = GameState(GameStateTest.G)
 
 		self.assertEquals(state.turn, Label.RED)
 		state.make_move(0)
@@ -64,7 +65,7 @@ class GameStateTest(unittest.TestCase):
 
 	def test_gameover_state(self):
 		"""Tests proper gameover state."""
-		state = GameState.GameState(GameStateTest.G)
+		state = GameState(GameStateTest.G)
 		state.make_move(0)
 		state.make_move(1)
 		state.make_move(2)
@@ -78,7 +79,7 @@ class GameStateTest(unittest.TestCase):
 		a move has been made.
 		"""
 		GameStateTest.G.add_edge(0, 1)
-		state = GameState.GameState(GameStateTest.G)
+		state = GameState(GameStateTest.G)
 		self.assertEquals(state.get_available_moves(), [0, 1, 2])
 
 		state.make_move(0)
@@ -88,13 +89,13 @@ class GameStateTest(unittest.TestCase):
 	def test_invalid_move(self):
 		"""Tests that invalid moves raise an exception"""
 		GameStateTest.G.add_edge(0, 1)
-		state = GameState.GameState(GameStateTest.G)
+		state = GameState(GameStateTest.G)
 		state.make_move(0)
 		state.make_move(1)
-		self.assertRaises(GameState.InvalidMoveException)
+		self.assertRaises(InvalidMoveException)
 	
 	def test_available_count(self):
-		state = GameState.GameState(GameStateTest.G)
+		state = GameState(GameStateTest.G)
 		self.assertEquals(state.count_available(), 3)
 
 		state.make_move(0)
