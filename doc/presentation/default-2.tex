@@ -1,0 +1,11 @@
+\tikzset{every node/.style={circle, draw}}
+\node (n1) at (2,1.8) {$1$};
+\node[fill=red,text=white] (n2) at (1,1) {$2$};
+\node (n3) at (2,3) {$3$};
+\node[fill=blue,text=white] (n4) at (3,1) {$4$};
+\node (n5) at (3.3,2.3) {$5$};
+
+\foreach \from/\to in {n1/n2,n1/n3,n1/n4,n1/n5,n1/n5,n3/n5,n4/n5}
+{
+	\draw (\from) -- (\to);
+}

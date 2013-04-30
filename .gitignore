@@ -1,3 +1,7 @@
 *.pyc
 
-doc/**
+*.bib
+*.aux
+*.bbl
+*.log
+*.toc
