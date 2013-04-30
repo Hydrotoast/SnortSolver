@@ -8,7 +8,7 @@ class InvalidMoveException(Exception):
 		self.move = move
 
 	def __str__(self):
-		return repr(self.move), ' is an invalid move.'
+		return str('%d is an invalid move.' % self.move)
 
 class GameoverException(Exception):
 	def __str__(self):

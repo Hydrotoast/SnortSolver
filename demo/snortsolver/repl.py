@@ -1,4 +1,4 @@
-from  gamestate import GameState, GameoverException
+from  gamestate import GameState, InvalidMoveException, GameoverException
 import player
 
 import networkx as nx
@@ -40,6 +40,8 @@ class REPL(object):
 					move = self.red.get_move(self.state)
 				else:
 					move = self.blue.get_move(self.state)
+				if move is None:
+					print move, 'is none'
 				self.state.make_move(move)
 				self.state.alternate_turn()
 				plt.draw()

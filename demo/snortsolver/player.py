@@ -23,6 +23,7 @@ class HumanPlayer(Player):
 		return v
 
 	def recommend_move(self, graph, moves):
+		"""Recommends a move for the human player."""
 		best_move = moves[0]
 		best_degree = graph.degree(moves[0])
 		for i in moves:
@@ -41,5 +42,5 @@ class BotPlayer(Player):
 			print 'Bot plays:', move, 'with value', score, os.linesep
 			return move
 		except Exception, e:
-			print 'Error', e 
+			print 'Bot Error:', e 
 
