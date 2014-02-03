@@ -1,37 +1,68 @@
 \documentclass[mathserif]{beamer}
+	% Clears navigation bar and symbols
+	\setbeamertemplate{footline}[page number]{}
+	\setbeamertemplate{navigation symbols}{}
+	\usetheme{Copenhagen}
 
-% Clears navigation bar and symbols
-\setbeamertemplate{footline}[page number]{}
-\setbeamertemplate{navigation symbols}{}
-\usetheme{Copenhagen}
+	\usepackage{amsmath}
+	\usepackage{amsthm}
 
-\usepackage{amsmath}
-\usepackage{amsthm}
+	\newtheorem{thm}{Theorem}
+	\newtheorem{prop}{Proposition}
 
-\newtheorem{thm}{Theorem}
-\newtheorem{prop}{Proposition}
+	\usepackage{tikz}
+	\usepackage{xcolor}
 
-\usepackage{tikz}
-\usepackage{xcolor}
+	\tikzstyle{node} = [circle, node distance=0.5]
+	\tikzstyle{edgenode} =[rectangle, midway, fill=white, font=\color{black!50}\tiny]
+	\tikzstyle{line} = [draw, thick]
+	\tikzstyle{vec} = [draw, ->, -latex, ultra thick, orange]
 
-\tikzstyle{node} = [circle, node distance=0.5]
-\tikzstyle{edgenode} =[rectangle, midway, fill=white, font=\color{black!50}\tiny]
-\tikzstyle{line} = [draw, thick]
-\tikzstyle{vec} = [draw, ->, -latex, ultra thick, orange]
+	\newcommand{\rplayer}{\textcolor{red}{Red }}
+	\newcommand{\bplayer}{\textcolor{blue}{Blue }}
 
-\newcommand{\rplayer}{\textcolor{red}{Red }}
-\newcommand{\bplayer}{\textcolor{blue}{Blue }}
+	\author{Gio Carlo Cielo Borje}
+	\institute{UC Irvine}
+	\title{Combinatorial Game Representation and Analysis of Snort}
+	\date{\today}
 
-\author{Gio Carlo Cielo Borje}
-\institute{UC Irvine}
-\title{Combinatorial Game Representation and Analysis of Snort}
-\date{\today}
-
-\setbeamercovered{transparent}
+	\setbeamercovered{transparent}
 \begin{document}
 
 \begin{frame}
 	\maketitle
+\end{frame}
+
+\begin{frame}{Outline}
+	\begin{enumerate}
+		\item Introduction to Game Theory
+		\item Snort Description
+		\item Snort Analysis
+		\item Analysis on Families of Graphs
+		\item Game Variants
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Introduction to Game Theory}
+	\begin{description}
+		\item [Fairness] A game is said to be \emph{fair} if draws may
+			occur.
+		\item [Progressively Bounded] A game is said to be
+			\emph{progressively bounded} if the game is guaranteed to end
+			within a finite amount of time.
+	\end{description}
+\end{frame}
+
+\begin{frame}{Solving Games}
+	We say that a game can be solved in one of two levels:
+
+	\begin{description}
+		\item [Weak Solution] The outcome can be determined in any
+		state.
+		\item [Strong Solution] The outcome can be determined in
+			any state which can produce perfect play from any position
+			within a reasonable amount of time.
+	\end{description}
 \end{frame}
 
 \begin{frame}{Snort Description}
@@ -103,7 +134,6 @@
 	\begin{enumerate}
 		\item Determinate
 		\item Zero-sum
-		\item Asymmetric
 		\item Perfect information
 		\item Sequential
 		\item Normal-play
@@ -133,7 +163,7 @@
 		Given that there are n vertices and there are four
 		vertex states, there is at most $o(4^n)$ possible
 		game configurations. Hence, the state space is
-		finite.
+		finite. \newline
 
 		Further, each move locks a particular vertex to a
 		configuration which reduces the state space size.
