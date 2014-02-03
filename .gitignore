@@ -1,5 +1,12 @@
-*.pyc
+# Project artifacts
+*.idea
 
+
+# Python caches
+*.pyc
+__python__
+
+# TeX artifacts
 *.bib
 *.aux
 *.bbl
